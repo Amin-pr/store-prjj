@@ -95,6 +95,10 @@ function LoginPage({
     }
   }, [loginRes, isRendered]);
 
+  fetch("https://api.storerestapi.com/users/612e4851345dcc333ac6cb24")
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
   useEffect(function () {
     async function fetchUser() {
       const res = await fetch("https://api.storerestapi.com/users");
@@ -106,6 +110,11 @@ function LoginPage({
   }, []);
   return (
     <>
+      <div className="user-pass position-absolute top-0 right-0 bg-white">
+        <p>user: marklyan@gmail.com </p>
+
+        <p>pass: simple_password </p>
+      </div>
       <div className="body">
         <div className="main">
           <Toaster />
