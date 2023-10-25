@@ -36,21 +36,25 @@ function CartList({ cartList, setCartList }) {
             {cartList?.map((cartItem) => (
               <tr key={cartItem.id}>
                 <th scope="row">
-                  <img src={cartItem.image} alt="" style={{ maxWidth: 50 }} />
+                  <img
+                    src="https://loremflickr.com/640/480/sports"
+                    alt=""
+                    style={{ maxWidth: 50 }}
+                  />
                 </th>
                 <th scope="row" className="align-middle">
                   {cartItem.title}
                 </th>
-                <td className="align-middle">{cartItem.price}</td>
+                <td className="align-middle">{cartItem.price}$</td>
                 <td className="align-middle">{cartItem.quantity}</td>
                 <td className="align-middle">
-                  {Math.trunc(cartItem.total * 10) / 10}
+                  {Math.trunc(cartItem.total * 10) / 10}$
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {cartTotal ? <p className="mt-5 h3">Cart price: {cartTotal}</p> : ""}
+        {cartTotal ? <p className="mt-5 h3">Cart price: {cartTotal}$</p> : ""}
       </div>
     </div>
   );

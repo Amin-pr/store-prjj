@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./bootstrap.min.css";
 import "./app.css";
 import Header from "./Header";
@@ -11,24 +11,47 @@ import Footer from "./Footer";
 import Cart from "./Cart";
 import Product from "./Product";
 import LoginPage from "./LoginPage";
+import toast, { Toaster } from "react-hot-toast";
+import ReactLoading from "react-loading";
+import axios from "axios";
 
 function App() {
   const [Data, setData] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState([]);
+  const [logedin, setLogedin] = useState(false);
+  const [logedinEmail, setLOgedinEmail] = useState("");
   const [cartList, setCartList] = useState([]);
   const [currentPage, setCurrentPage] = useState("home");
   const [productInfo, setProductInfo] = useState({});
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  useEffect(function () {
-    async function fetchedData() {
-      const res = await fetch("https://fakestoreapi.com/products/");
-      const data = await res.json();
-      setData(data);
-      console.log(data);
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      try {
+        const response = await axios.get("https://fakestoreapi.com/products");
+        setData(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-    fetchedData();
+
+    fetchData();
   }, []);
+
+  useEffect(
+    function () {
+      if (logedin) {
+        const userinfo = setUser({ logedinEmail, cartList });
+        console.log(userinfo, logedinEmail, cartList);
+        console.log(user);
+      }
+    },
+    [cartList, logedin]
+  );
 
   function addHandler(Data) {
     const newItemToCart = {
@@ -57,6 +80,40 @@ function App() {
 
     console.log(cartList);
   }
+
+  function deleteHandler(Data) {
+    const selectedItem = {
+      id: Data.id,
+    };
+    console.log(Data, selectedItem.id);
+
+    const findedItem = cartList.find(
+      (cartItem) => cartItem.id === selectedItem.id && cartItem
+    );
+    console.log(findedItem);
+
+    if (findedItem) {
+      console.log(findedItem, cartList);
+
+      if (findedItem.quantity <= 1) {
+        console.log(findedItem);
+        const updatedCart = cartList.filter(
+          (cartItem) => cartItem.id !== selectedItem.id
+        );
+        setCartList([...updatedCart]);
+      } else {
+        const updatedCart = cartList.map((cartItem) =>
+          cartItem.id === selectedItem.id
+            ? {
+                ...cartItem,
+                quantity: cartItem.quantity - 1,
+              }
+            : cartItem
+        );
+        setCartList([...updatedCart]);
+      }
+    }
+  }
   // useEffect(
   //   function () {
   //     // console.log(cartList);
@@ -64,11 +121,27 @@ function App() {
   //   [cartList]
   // );
   console.log(productInfo);
+  useEffect(() => {
+    error !== "" && toast(error);
+  }, [error]);
+
   return (
-    <div className="App bg-secondary vh-100 overflow-x-hidden">
+    <div className="App bg-secondary overflow-x-hidden position-relative">
+      {isLoading && (
+        <div className="loading-wrapper ">
+          <ReactLoading type="spokes" color="#4B0082" />
+        </div>
+      )}
+
+      <Toaster />
       <div className="holder bg-white px-0 ">
         {currentPage === "login" ? (
-          <LoginPage setCurrentPage={setCurrentPage} setUser={setUser} user={user}/>
+          <LoginPage
+            setCurrentPage={setCurrentPage}
+            setLogedinEmail={setLOgedinEmail}
+            setLogedin={setLogedin}
+            setIsLoading={setIsLoading}
+          />
         ) : (
           <>
             <Header cartList={cartList} setCurrentPage={setCurrentPage} />
@@ -78,15 +151,16 @@ function App() {
                 <Products
                   Data={Data}
                   cartList={cartList}
-                  setCartList={setCartList}
+                  // setCartList={setCartList}
                   setCurrentPage={setCurrentPage}
                   setProductInfo={setProductInfo}
                   productInfo={productInfo}
                   addHandler={addHandler}
+                  deleteHandler={deleteHandler}
                 ></Products>
                 <Benifits></Benifits>
                 <Comments></Comments>
-                <Popular></Popular>
+                <Popular Data={Data}></Popular>
               </>
             )}
             {currentPage === "cart" && (
@@ -96,6 +170,8 @@ function App() {
               <Product
                 productInfo={productInfo}
                 addHandler={addHandler}
+                deleteHandler={deleteHandler}
+                cartList={cartList}
               ></Product>
             )}
             <Footer />

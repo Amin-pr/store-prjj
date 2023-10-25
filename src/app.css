@@ -46,10 +46,9 @@ a {
 
 .wrapper {
   width: 100%;
-  height: 100%;
-  max-height: 300px;
+height: 100%;
+  max-height: 200px;
   overflow-y: auto !important;
-
 }
 
 .banner-image {
@@ -58,12 +57,13 @@ a {
   background-size: cover;
   height: 300px;
   width: 100%;
+
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255, 0.255)
+  border: 1px solid rgba(255, 255, 255, 0.255);
 }
 
-h1{
-  font-family: 'Righteous', sans-serif;
+h1 {
+  font-family: "Righteous", sans-serif;
   color: rgba(42, 39, 39, 0.98);
   text-transform: uppercase;
   font-size: 2.4rem;
@@ -71,7 +71,7 @@ h1{
 
 p {
   color: #141313;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 0.8rem;
   line-height: 150%;
@@ -79,7 +79,8 @@ p {
   text-transform: uppercase;
 }
 
-.button-wrapper{
+.button-wrapper {
+  bottom: 0;
   margin-top: 18px;
   display: flex;
 }
@@ -91,8 +92,8 @@ p {
   padding: 12px 24px;
   border-radius: 24px;
   font-size: 12px;
-  font-size: 0.8rem;  
-  letter-spacing: 2px;  
+  font-size: 0.8rem;
+  letter-spacing: 2px;
   cursor: pointer;
 }
 
@@ -104,15 +105,14 @@ p {
   background: transparent;
   color: #5676b2;
   border: 1px solid #5676b2;
-  transition: all .3s ease;
-  
+  transition: all 0.3s ease;
 }
 
-.outline:hover{
+.outline:hover {
   transform: scale(1.125);
   color: rgba(18, 18, 18, 0.9);
   border-color: rgba(19, 18, 18, 0.9);
-  transition: all .3s ease;  
+  transition: all 0.3s ease;
 }
 
 .fill {
@@ -120,30 +120,44 @@ p {
   color: rgba(20, 18, 18, 0.95);
   filter: drop-shadow(0);
   font-weight: bold;
-  transition: all .3s ease; 
+  transition: all 0.3s ease;
 }
 
-.fill:hover{
-  transform: scale(1.125);  
+.fill:hover {
+  transform: scale(1.125);
   border-color: rgba(255, 255, 255, 0.9);
-  filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
-  transition: all .3s ease;    
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
 }
 
-.footer-title:hover{
-  text-shadow: 0 0 5px #a9baff ;
+.footer-title:hover {
+  text-shadow: 0 0 5px #a9baff;
   scale: 1.1;
-  transition:0.3s ;
-
+  transition: 0.3s;
 }
 
-.footer-link:hover{
-  text-shadow: 0 0 5px #ffffff ;
+.footer-link:hover {
+  text-shadow: 0 0 5px #ffffff;
   scale: 1.1;
-  transition:0.3s ;
-
+  transition: 0.3s;
 }
-.btn:hover{
+.btn:hover {
   text-shadow: #cbcbcb;
   transition: 0.3s;
 }
+
+.loading-wrapper {
+  width: 100%;
+  height: 100vh;
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+
