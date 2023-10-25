@@ -13,23 +13,30 @@ function Popular({ Data }) {
   };
   console.log(Data);
   const sortedByRate = Data.sort(compsByRate);
+  sortedByRate.splice(4);
   // Data.rating.rate.sort((a,b)=>a-b)
   return (
-    <section className="popular text-center row justify-content-center">
+    <section className="popular  ">
       <div className="popular-text">
         <p className="h3">Popular</p>
         <p className="h5">Our top selling product that you may like</p>
       </div>
+      <div className="card-holder row row-cols-4 flex-wrap justify-content-center  ">
       {sortedByRate.map((Data) => (
-        <div class="container mx-2 my-4 ">
-          <img src={Data.image} class="banner-image" alt="product" />
-          <div class="wrapper">
-            <h5> {Data.title}</h5>
-            <p style={{ fontSize: 14 }}>{Data.price}</p>
-            <p>{Data.rating.rate}⭐</p>
+          <div class="container card border-1 m-2 p-2 d-flex ">
+            <img
+              src={Data.image}
+              class="banner-image card-image-top border-0"
+              alt="product"
+            />
+            <div class="wrapper ">
+              <p> {Data.title}</p>
+              <br />
+              <span className="text-start">{Data.rating.rate}</span><p className="text-start">{Data.price}$</p>
+            </div>
           </div>
-        </div>
       ))}
+      </div>
     </section>
   );
 }
