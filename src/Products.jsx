@@ -1,3 +1,4 @@
+import "./app.css"
 function Products({
   Data,
   cartList,
@@ -35,7 +36,7 @@ function Products({
 
   //   console.log(cartList);
   // }
-  console.log(cartList.length);
+  console.log(cartList?.length);
 
   function productHandler(Data) {
     setProductInfo(Data);
@@ -72,7 +73,7 @@ function Products({
   // }, [productInfo, setCurrentPage]);
 
   return (
-    <div className="product container my-5 py-5">
+    <div className="products container  py-5  blob-background">
       <h3 className="text-center d-block m-2 h3">Products</h3>
       <p className="text-center d-block mt-2 mb-5">
         Order it for you or for your beloved ones{" "}
@@ -88,7 +89,7 @@ function Products({
             />
             <div class="wrapper ">
               <p> {Data.title}</p>
-              <p className="text-start">{Data.price}$</p>
+              <p className="text-start h5">{Data.price}$</p>
             </div>
             <div class="button-wrapper align-self-end">
               <button

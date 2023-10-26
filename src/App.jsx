@@ -25,6 +25,17 @@ function App() {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showApp, setShowApp] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setShowApp(true);
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,11 +43,13 @@ function App() {
       try {
         const response = await axios.get("https://fakestoreapi.com/products");
         setData(response.data);
+        console.log(Data);
       } catch (error) {
         setError(error);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
+      // finally {
+      //   setIsLoading(false);
+      // }
     }
 
     fetchData();
@@ -126,15 +139,20 @@ function App() {
   }, [error]);
 
   return (
-    <div className="App bg-secondary overflow-x-hidden position-relative">
-      {isLoading && (
-        <div className="loading-wrapper ">
-          <ReactLoading type="spokes" color="#4B0082" />
-        </div>
-      )}
+    <>
+    {isLoading && (
+      <div className="loading-wrapper ">
+        <ReactLoading type="spokes" color="#4B0082" />
+      </div>
+    )}
+    <div
+      className={`App overflow-x-hidden position-relative ${
+        showApp ? "transition-appear active" : "transition-appear"
+      }`}
+    >
 
       <Toaster />
-      <div className="holder bg-white px-0 ">
+      <div className="holder px-0 ">
         {currentPage === "login" ? (
           <LoginPage
             setCurrentPage={setCurrentPage}
@@ -168,17 +186,18 @@ function App() {
             )}
             {currentPage === "product" && (
               <Product
-                productInfo={productInfo}
+              productInfo={productInfo}
                 addHandler={addHandler}
                 deleteHandler={deleteHandler}
                 cartList={cartList}
-              ></Product>
+                ></Product>
             )}
             <Footer />
           </>
         )}
       </div>
     </div>
+                </>
   );
 }
 

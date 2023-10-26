@@ -4,7 +4,7 @@ function Footer() {
   const footerLogoSrc = process.env.PUBLIC_URL + "img/footer-icon.png";
 
   return (
-    <section className="footer-holder bg-black pt-5 align-bottom w-100 ">
+    <section className="footer-holder pt-5 align-bottom w-100 ">
       <div className="footer row mx-auto container">
         <div className="footer-logo col">
           <img src={footerLogoSrc} alt="" className="footer-logo" />

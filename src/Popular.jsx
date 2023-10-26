@@ -12,7 +12,7 @@ function Popular({ Data }) {
     return 0;
   };
   console.log(Data);
-  const sortedByRate = Data.sort(compsByRate);
+  const sortedByRate = Data.slice().sort(compsByRate);
   sortedByRate.splice(4);
   // Data.rating.rate.sort((a,b)=>a-b)
   return (
@@ -32,7 +32,7 @@ function Popular({ Data }) {
             <div class="wrapper ">
               <p> {Data.title}</p>
               <br />
-              <span className="text-start">{Data.rating.rate}</span><p className="text-start">{Data.price}$</p>
+              <span className="text-start">{Data.rating.rate}⭐</span><p className="text-start">{Data.price}$</p>
             </div>
           </div>
       ))}

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import ReactLoading from "react-loading";
-
+import "./app.css";
 function LoginPage({
   setCurrentPage,
   setLogedinEmail,
@@ -111,9 +110,9 @@ function LoginPage({
   return (
     <>
       <div className="user-pass position-absolute top-0 right-0 bg-white">
-        <p>user: marklyan@gmail.com </p>
+        <p className="user-pass">user: marklyan@gmail.com </p>
 
-        <p>pass: simple_password </p>
+        <p className="user-pass">pass: simple_password </p>
       </div>
       <div className="body">
         <div className="main">
