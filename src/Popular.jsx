@@ -16,7 +16,7 @@ function Popular({ Data }) {
   sortedByRate.splice(4);
   // Data.rating.rate.sort((a,b)=>a-b)
   return (
-    <section className="popular  py-5">
+    <section className="popular py-5">
       <div className="popular-text">
         <p className="h3">Popular</p>
         <p className="h5">Our top selling product that you may like</p>
