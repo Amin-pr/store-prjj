@@ -16,13 +16,13 @@ function Popular({ Data }) {
   sortedByRate.splice(4);
   // Data.rating.rate.sort((a,b)=>a-b)
   return (
-    <section className="popular  ">
+    <section className="popular  py-5">
       <div className="popular-text">
         <p className="h3">Popular</p>
         <p className="h5">Our top selling product that you may like</p>
       </div>
       <div className="card-holder row row-cols-4 flex-wrap justify-content-center  ">
-      {sortedByRate.map((Data) => (
+        {sortedByRate.map((Data) => (
           <div class="container card border-1 m-2 p-2 d-flex ">
             <img
               src={Data.image}
@@ -32,10 +32,11 @@ function Popular({ Data }) {
             <div class="wrapper ">
               <p> {Data.title}</p>
               <br />
-              <span className="text-start">{Data.rating.rate}⭐</span><p className="text-start">{Data.price}$</p>
+              <span className="text-start">{Data.rating.rate}⭐</span>
+              <p className="text-start">{Data.price}$</p>
             </div>
           </div>
-      ))}
+        ))}
       </div>
     </section>
   );

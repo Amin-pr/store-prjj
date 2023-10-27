@@ -35,7 +35,7 @@ function App() {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [showApp]);
 
   useEffect(() => {
     async function fetchData() {
