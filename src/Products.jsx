@@ -143,20 +143,20 @@ function Products({
                   class="banner-image card-image-top border-0 h-50"
                   alt="product"
                 />
-                <div class="wrapper d-flex flex-wrap align-bot">
-                  <p className="my-3 mx-1 "  > {Data.title}</p>
-                  <p className="text-start h5 my-3 mx-1">{Data.price}$</p>
+                <div class="wrapper d-flex flex-wrap align-bottom pt-2">
+                  <p className="my-3 mx-1 "> {Data.title}</p>
+                  <p className="text-start h5 my-3 mx-1 ">{Data.price}$</p>
                 </div>
-                <div class="button-wrapper align-self-end ">
+                <div class="button-wrapper align-self-end px-2 ">
                   <button
-                    class="btn outline"
+                    class="btn products-category-btn"
                     onClick={() => productHandler(Data)}
                     onMouseEnter={() => setProductInfo(Data)}
                   >
-                    DETAILS
+                    Details
                   </button>
                   <button
-                    class="btn "
+                    class="btn products-category-btn  "
                     onMouseEnter={() => setProductInfo(Data)}
                     onClick={() => addHandler(Data)}
                   >
@@ -169,23 +169,23 @@ function Products({
               <div class="container card border-1 m-2 p-2 d-flex ">
                 <img
                   src={Data.image}
-                  class="banner-image card-image-top border-0"
+                  class="banner-image card-image-top border-0 "
                   alt="product"
                 />
-                <div class="wrapper ">
+                <div class="wrapper pt-5">
                   <p> {Data.title}</p>
                   <p className="text-start h5">{Data.price}$</p>
                 </div>
-                <div class="button-wrapper align-self-end">
+                <div class="button-wrapper align-self-end ">
                   <button
-                    class="btn outline"
+                    class="btn products-category-btn"
                     onClick={() => productHandler(Data)}
                     onMouseEnter={() => setProductInfo(Data)}
                   >
-                    DETAILS
+                    Details
                   </button>
                   <button
-                    class="btn fill"
+                    class="btn products-category-btn"
                     onMouseEnter={() => setProductInfo(Data)}
                     onClick={() => addHandler(Data)}
                   >
