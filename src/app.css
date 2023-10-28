@@ -94,6 +94,9 @@ p {
   margin-top: 18px;
   display: flex;
 }
+.card-btn{
+  background: #61458a;
+}
 
 .btn {
   border: none;
@@ -109,28 +112,6 @@ p {
 
 .btn + .btn {
   margin-left: 10px;
-}
-
-.outline {
-  background: transparent;
-  color: #5676b2;
-  border: 1px solid #5676b2;
-  transition: all 0.3s ease;
-}
-
-.outline:hover {
-  transform: scale(1.125);
-  color: rgba(18, 18, 18, 0.9);
-  border-color: rgba(19, 18, 18, 0.9);
-  transition: all 0.3s ease;
-}
-
-.fill {
-  background: #5676b2;
-  color: rgba(20, 18, 18, 0.95);
-  filter: drop-shadow(0);
-  font-weight: bold;
-  transition: all 0.3s ease;
 }
 
 .fill:hover {
