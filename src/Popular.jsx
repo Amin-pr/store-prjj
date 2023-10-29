@@ -19,21 +19,23 @@ function Popular({ Data }) {
     <section className="popular py-5">
       <div className="popular-text">
         <p className="h3">Popular</p>
+        <br />
         <p className="h5">Our top selling product that you may like</p>
       </div>
-      <div className="card-holder row row-cols-4 flex-wrap justify-content-center  ">
+      <div className="card-holder row row-cols-4 flex-wrap justify-content-center  p-3">
         {sortedByRate.map((Data) => (
-          <div class="container card border-1 m-2 p-2 d-flex ">
+          <div class="container card border-1 m-2 p-2 d-flex position-realtive ">
             <img
               src={Data.image}
-              class="banner-image card-image-top border-0"
+              class="banner-image card-image-top border-0 h-50"
               alt="product"
             />
-            <div class="wrapper ">
-              <p> {Data.title}</p>
+            <div class="wrapper justify-content-center h-50 align-self-end p-2 row position-absolute bottom-0 start-50 translate-middle-x w-100 align-items-center">
+              <p className="col-12"> {Data.title}</p>
               <br />
-              <span className="text-start">{Data.rating.rate}⭐</span>
-              <p className="text-start">{Data.price}$</p>
+              <p className="text-start h5 col-5">{Data.rating.rate}⭐</p>
+              <p className="text-end h5 col-5">{Data.price}$
+              </p>
             </div>
           </div>
         ))}

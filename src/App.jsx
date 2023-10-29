@@ -26,7 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showApp, setShowApp] = useState(false);
-
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     setIsLoading(true);
     const timer = setTimeout(() => {
@@ -38,6 +38,16 @@ function App() {
   }, [showApp]);
 
   useEffect(() => {
+    async function fetchUsers() {
+      const response = await fetch("https://api.storerestapi.com/users");
+      const users = await response.json();
+      setUsers(users.data);
+    }
+    fetchUsers();
+    console.log(users);
+  }, []);
+
+  useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
       try {
@@ -46,7 +56,7 @@ function App() {
         console.log(Data);
       } catch (error) {
         setError(error);
-      } 
+      }
       // finally {
       //   setIsLoading(false);
       // }
@@ -140,64 +150,63 @@ function App() {
 
   return (
     <>
-    {isLoading && (
-      <div className="loading-wrapper ">
-        <ReactLoading type="spokes" color="#4B0082" />
-      </div>
-    )}
-    <div
-      className={`App overflow-x-hidden position-relative ${
-        showApp ? "transition-appear active" : "transition-appear"
-      }`}
-    >
-
-      <Toaster />
-      <div className="holder px-0 ">
-        {currentPage === "login" ? (
-          <LoginPage
-            setCurrentPage={setCurrentPage}
-            setLogedinEmail={setLOgedinEmail}
-            setLogedin={setLogedin}
-            setIsLoading={setIsLoading}
-          />
-        ) : (
-          <>
-            <Header cartList={cartList} setCurrentPage={setCurrentPage} />
-            {currentPage === "home" && (
-              <>
-                <HeaderImage />
-                <Products
-                  Data={Data}
-                  cartList={cartList}
-                  // setCartList={setCartList}
-                  setCurrentPage={setCurrentPage}
-                  setProductInfo={setProductInfo}
+      {isLoading && (
+        <div className="loading-wrapper ">
+          <ReactLoading type="spokes" color="#4B0082" />
+        </div>
+      )}
+      <div
+        className={`App overflow-x-hidden position-relative ${
+          showApp ? "transition-appear active" : "transition-appear"
+        }`}
+      >
+        <Toaster />
+        <div className="holder px-0 ">
+          {currentPage === "login" ? (
+            <LoginPage
+              setCurrentPage={setCurrentPage}
+              setLogedinEmail={setLOgedinEmail}
+              setLogedin={setLogedin}
+              setIsLoading={setIsLoading}
+            />
+          ) : (
+            <>
+              <Header cartList={cartList} setCurrentPage={setCurrentPage} />
+              {currentPage === "home" && (
+                <>
+                  <HeaderImage />
+                  <Products
+                    Data={Data}
+                    cartList={cartList}
+                    // setCartList={setCartList}
+                    setCurrentPage={setCurrentPage}
+                    setProductInfo={setProductInfo}
+                    productInfo={productInfo}
+                    addHandler={addHandler}
+                    deleteHandler={deleteHandler}
+                  ></Products>
+                  <Benifits></Benifits>
+                  <Comments users={users}></Comments>
+                  <Popular Data={Data}></Popular>
+                </>
+              )}
+              {currentPage === "cart" && (
+                <Cart cartList={cartList} setCartList={setCartList} deleteHandler={deleteHandler} />
+              )}
+              {currentPage === "product" && (
+                <Product
                   productInfo={productInfo}
                   addHandler={addHandler}
                   deleteHandler={deleteHandler}
-                ></Products>
-                <Benifits></Benifits>
-                <Comments></Comments>
-                <Popular Data={Data}></Popular>
-              </>
-            )}
-            {currentPage === "cart" && (
-              <Cart cartList={cartList} setCartList={setCartList} />
-            )}
-            {currentPage === "product" && (
-              <Product
-              productInfo={productInfo}
-                addHandler={addHandler}
-                deleteHandler={deleteHandler}
-                cartList={cartList}
+                  cartList={cartList}
                 ></Product>
-            )}
-            <Footer />
-          </>
-        )}
+              )}
+              <Footer />
+            </>
+          )}
+        </div>
       </div>
-    </div>
-                </>
+    </>
   );
 }
 

@@ -43,7 +43,7 @@ function Product({ productInfo, addHandler, deleteHandler, cartList }) {
                     >
                       -
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary disabled" aria-disabled="true">
                       {quantity}
                     </button>
                     <button

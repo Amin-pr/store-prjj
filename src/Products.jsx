@@ -137,17 +137,17 @@ function Products({
         {/* <Product Data={Data}></Product> */}
         {category === "all"
           ? Data.map((Data) => (
-              <div class="container card border-1 m-2 p-2 d-flex ">
+              <div class="container card border-1 m-2 p-2 d-flex position-relative">
                 <img
                   src={Data.image}
                   class="banner-image card-image-top border-0 h-50"
                   alt="product"
                 />
-                <div class="wrapper d-flex flex-wrap align-bottom pt-2">
+                <div class="wrapper d-flex flex-wrap align-bottom pt-2 h-50">
                   <p className="my-3 mx-1 "> {Data.title}</p>
-                  <p className="text-start h5 my-3 mx-1 ">{Data.price}$</p>
+                  <p className="text-start h5 m-3 ">{Data.price}$</p>
                 </div>
-                <div class="button-wrapper align-self-end px-2 ">
+                <div class="button-wrapper align-self-end p-2  position-absolute bottom-0 start-50 translate-middle-x">
                   <button
                     class="btn products-category-btn"
                     onClick={() => productHandler(Data)}

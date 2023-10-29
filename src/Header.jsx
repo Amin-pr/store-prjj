@@ -24,7 +24,7 @@ function Header({ cartList, setCurrentPage }) {
         <div className="mid-btn col row text-nowrap text-center justify-content-around">
           <div className="dropdown text-center col ">
             <button
-              className="btn dropdown-toggle "
+              className="btn dropdown-toggle header-btn "
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -56,15 +56,18 @@ function Header({ cartList, setCurrentPage }) {
               </li>
             </ul>
           </div>
-          <button className="btn col" onClick={() => setCurrentPage("home")}>
+          <button
+            className="btn col header-btn"
+            onClick={() => setCurrentPage("home")}
+          >
             Home
           </button>
-          <button className="btn col">Contact Us</button>
+          <button className="btn col header-btn">Contact Us</button>
         </div>
         <div className="right-btn col d-flex flex-nowrap justify-content-center col-2">
           <button
             href="#"
-            className="btn position-relative "
+            className="btn position-relative header-btn"
             onClick={() => setCurrentPage("cart")}
           >
             <svg
@@ -83,7 +86,7 @@ function Header({ cartList, setCurrentPage }) {
           </button>
           <button
             href="#"
-            className="btn"
+            className="btn header-btn"
             onClick={() => setCurrentPage("login")}
           >
             <svg
