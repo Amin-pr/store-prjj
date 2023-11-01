@@ -13,40 +13,40 @@ function Footer() {
           </p>
         </div>
         <div className="footer-links col row justify-content-md-between">
-          <a href="#" className="footer-title  text-glow col-4">
+          <a href="#" className="footer-title  text-glow col-12 col-sm-4 ">
             Discovery
           </a>
-          <a href="#" className="footer-title  col-4">
+          <a href="#" className="footer-title  col-12 col-sm-4">
             About
           </a>
-          <a href="#" className="footer-title   col-4">
+          <a href="#" className="footer-title   col-12 col-sm-4">
             Info
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             New Season
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Help
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Contact Us
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Most Searched
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Shipping
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Privacy Policy
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Most Selled
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Affiliate
           </a>
-          <a href="" className="footer-link text-white  col-4">
+          <a href="" className="footer-link text-white  col-12 col-sm-4">
             Terms & Conditions
           </a>
         </div>

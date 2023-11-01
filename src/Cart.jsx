@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 
-function CartList({ cartList, setCartList,deleteHandler }) {
-  
-  
-  
+function CartList({ cartList, setCartList, deleteHandler }) {
   useEffect(() => {
     const updatedCartList = cartList?.map((cartItem) => ({
       ...cartItem,
@@ -16,11 +13,9 @@ function CartList({ cartList, setCartList,deleteHandler }) {
   console.log(cartList);
 
   const cartTotal = cartList?.reduce((total, cartItem) => {
-
     return total + cartItem.total;
   }, 0);
-  
-  
+
   return (
     <div className="cart-list p-0 ">
       <div className="cart-top text-center ">
@@ -66,7 +61,15 @@ function CartList({ cartList, setCartList,deleteHandler }) {
                       {Math.trunc(cartItem.total * 10) / 10}$
                     </td>
                     <td className="align-middle bg-transparent">
-                      <button className="btn cartlist-delete-btn" onClick={()=>{deleteHandler(cartItem)}}>❌</button></td>
+                      <button
+                        className="btn cartlist-delete-btn"
+                        onClick={() => {
+                          deleteHandler(cartItem);
+                        }}
+                      >
+                        ❌
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -74,9 +77,9 @@ function CartList({ cartList, setCartList,deleteHandler }) {
             {cartTotal && <p className="mt-5 h3">Cart price: {cartTotal}$</p>}
           </>
         ) : (
-          <div className="container d-flex align-items-center">
-            <div className="empty-cart "></div>
-            <p className=" ">Your cart is empty add somthing to buy💲</p>
+          <div className="container row align-items-center">
+            <div className="empty-cart col m-2 "></div>
+            <p className=" col m-2">Your cart is empty add somthing to buy💲</p>
           </div>
         )}
       </div>
@@ -84,10 +87,14 @@ function CartList({ cartList, setCartList,deleteHandler }) {
   );
 }
 
-function Cart({ cartList, setCartList,deleteHandler }) {
+function Cart({ cartList, setCartList, deleteHandler }) {
   return (
     <section className="cart-page  my-5">
-      <CartList cartList={cartList} setCartList={setCartList} deleteHandler={deleteHandler}/>
+      <CartList
+        cartList={cartList}
+        setCartList={setCartList}
+        deleteHandler={deleteHandler}
+      />
     </section>
   );
 }

@@ -82,12 +82,12 @@ function Products({
         Order it for you or for your beloved ones{" "}
       </p>
       <div
-        className="btn-group col-12  my-3"
+        className="products-cats-btn-holder btn-group col-12 row  my-3"
         role="group"
         aria-label="Basic example"
       >
         <button
-          className="btn products-category-btn"
+          className="btn products-category-btn col-12 col-md-2"
           onClick={() => setCategory("men's clothing")}
           autocomplete="off"
           aria-pressed="true"
@@ -96,7 +96,7 @@ function Products({
           Men clothing
         </button>
         <button
-          className="btn products-category-btn"
+          className="btn products-category-btn col-12 col-md-2"
           onClick={() => setCategory("women's clothing")}
           autocomplete="off"
           aria-pressed="true"
@@ -105,7 +105,7 @@ function Products({
           Women clothing
         </button>
         <button
-          className="btn products-category-btn active"
+          className="btn products-category-btn col-12 col-md-2 active"
           onClick={() => setCategory("all")}
           autocomplete="off"
           aria-pressed="true"
@@ -115,7 +115,7 @@ function Products({
         </button>
 
         <button
-          className="btn products-category-btn"
+          className="btn products-category-btn col-12 col-md-2"
           onClick={() => setCategory("jewelery")}
           data-bs-toggle="button"
           autocomplete="off"
@@ -124,7 +124,7 @@ function Products({
           Jewelry
         </button>
         <button
-          className="btn products-category-btn"
+          className="btn products-category-btn col-12 col-md-2"
           onClick={() => setCategory("electronics")}
           autocomplete="off"
           aria-pressed="true"
@@ -138,11 +138,13 @@ function Products({
         {category === "all"
           ? Data.map((Data) => (
               <div class="container card border-1 m-2 p-2 d-flex col-5 col-lg-3 col-md-5">
-                <img
-                  src={Data.image}
-                  class="banner-image card-image-top border-0 h-50"
-                  alt="product"
-                />
+                <div className="image-wrapper">
+                  <img
+                    src={Data.image}
+                    class="banner-image card-image-top border-0 h-"
+                    alt="product"
+                  />
+                </div>
                 <div class="wrapper row  flex-wrap pt-2 justify-content-center">
                   <p className="my-3 mx-1 col-12"> {Data.title}</p>
                   <p className=" h5 m-3 col-sm-6 align-self-center justify-self-center col-12 ">
@@ -168,26 +170,30 @@ function Products({
               </div>
             ))
           : Data.filter((Data) => Data.category === category).map((Data) => (
-              <div class="container card border-1 m-2 p-2 d-flex col-lg-3 col-md-5">
-                <img
-                  src={Data.image}
-                  class="banner-image card-image-top border-0 "
-                  alt="product"
-                />
-                <div class="wrapper pt-5">
-                  <p> {Data.title}</p>
-                  <p className="text-start h5">{Data.price}$</p>
+              <div class="container card border-1 m-2 p-2 d-flex col-5 col-lg-3 col-md-5">
+                <div className="image-wrapper">
+                  <img
+                    src={Data.image}
+                    class="banner-image card-image-top border-0 h-"
+                    alt="product"
+                  />
                 </div>
-                <div class="button-wrapper align-self-end ">
+                <div class="wrapper row  flex-wrap pt-2 justify-content-center">
+                  <p className="my-3 mx-1 col-12"> {Data.title}</p>
+                  <p className=" h5 m-3 col-sm-6 align-self-center justify-self-center col-12 ">
+                    {Data.price}$
+                  </p>
+                </div>
+                <div class="button-wrapper m-0  align-self-end p-2 col-12  row ">
                   <button
-                    class="btn products-category-btn"
+                    class="btn products-category-btn col-12 col-sm-5"
                     onClick={() => productHandler(Data)}
                     onMouseEnter={() => setProductInfo(Data)}
                   >
                     Details
                   </button>
                   <button
-                    class="btn products-category-btn"
+                    class="btn products-category-btn col-12 col-sm-6  "
                     onMouseEnter={() => setProductInfo(Data)}
                     onClick={() => addHandler(Data)}
                   >

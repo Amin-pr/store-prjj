@@ -16,12 +16,12 @@ function Header({ cartList, setCurrentPage }) {
 
   return (
     <header className="header py-3">
-      <nav className="navbar container row text-center  align-items-center justify-content-between flex-nowrap mx-auto ">
+      <nav className="navbar container row text-center  align-items-center justify-content-between flex-nowrap mx-auto px-2 ">
         <div className="left-btn header-logo  navbar-brand justify-content-start d-flex col">
           <img src={headerSrc} alt="logo" className="header-logo " />
           <div className="input-group"></div>
         </div>
-        <div className="mid-btn col-8  row text-nowrap text-center justify-content-around">
+        <div className="mid-btn col-10  row text-nowrap text-center justify-content-around">
           <div className="dropdown text-center col-12 col-sm-3 ">
             <button
               className="btn dropdown-toggle header-btn "
@@ -66,10 +66,10 @@ function Header({ cartList, setCurrentPage }) {
             Contact Us
           </button>
         </div>
-        <div className="right-btn col  d-flex flex-nowrap justify-content-center ">
+        <div className="right-btn col row  justify-content-around ">
           <button
             href="#"
-            className="btn position-relative header-btn"
+            className="btn position-relative header-btn col"
             onClick={() => setCurrentPage("cart")}
           >
             <svg
@@ -82,13 +82,13 @@ function Header({ cartList, setCurrentPage }) {
             >
               <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
             </svg>
-            <span className="badge bg-danger position-absolute top-0 start-80">
+            <span className="badge bg-danger col-12 col-sm-5 justify-content-center ">
               {cartItemsNum >= 1 ? cartItemsNum : ""}
             </span>
           </button>
           <button
             href="#"
-            className="btn header-btn"
+            className="btn header-btn col-12 col-sm-5"
             onClick={() => setCurrentPage("login")}
           >
             <svg
