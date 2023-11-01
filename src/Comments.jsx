@@ -6,12 +6,12 @@ function Comments({ users }) {
 
   
     return slicedComments.map((comment, index) => (
-      <div className="card col-3 m-2 border-0 " key={index}>
-        <div className="card-body">
+      <div className="card  m-2 border-0 " key={index}>
+        <div className="card-body row">
           <img
             src="https://i.pravatar.cc/200"
             alt=""
-            className="card-img-top comment-user-img my-2"
+            className="card-img-top comment-user-img my-2 col-md-3"
           />
           <p className="comentor-name text-center">{comment.name}</p>
           <p className="stars text-center">⭐⭐⭐⭐⭐</p>

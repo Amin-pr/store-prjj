@@ -2,9 +2,12 @@ function Benifits() {
   const benifitsImageSrc = process.env.PUBLIC_URL + "/img/benifits-img.jpg";
   return (
     <div className="benifits bg-light m-0 p-0">
-      <div className="container row-cols-2 d-flex py-5  ">
-        <div className=" col  d-flex align-items-center justify-content-center">
-          <div className="benifits-text-holder text-center mx-3 px-5 ">
+      <div className="container  ">
+        <div className=" col  row align-items-center justify-content-center">
+          <div className=" col-12 col-sm-1 mx-1 ">
+            <img src={benifitsImageSrc} alt="" className="card-img shadow" />
+          </div>
+          <div className="benifits-text-holder text-center mx-3 px-5 col-12 col-sm-12 ">
             <p className="card-title mt-3 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +77,6 @@ function Benifits() {
               quibusdam nulla rem sequi.
             </p>
           </div>
-        </div>
-        <div className=" col mx-1 ">
-          <img src={benifitsImageSrc} alt="" className="card-img shadow" />
         </div>
       </div>
     </div>

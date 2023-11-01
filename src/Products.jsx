@@ -81,7 +81,6 @@ function Products({
       <p className="text-center d-block mt-2 mb-5">
         Order it for you or for your beloved ones{" "}
       </p>
-      <div className="card-holder row row-cols-4 flex-wrap justify-content-center  ">
         <div
           className="btn-group col-12  my-3"
           role="group"
@@ -135,9 +134,10 @@ function Products({
           </button>
         </div>
         {/* <Product Data={Data}></Product> */}
+        <div className="card-holder row   flex-wrap justify-content-center  ">
         {category === "all"
           ? Data.map((Data) => (
-              <div class="container card border-1 m-2 p-2 d-flex position-relative">
+              <div class="container card border-1 m-2 p-2 d-flex position-relative col-lg-3 col-md-5">
                 <img
                   src={Data.image}
                   class="banner-image card-image-top border-0 h-50"
@@ -166,7 +166,7 @@ function Products({
               </div>
             ))
           : Data.filter((Data) => Data.category === category).map((Data) => (
-              <div class="container card border-1 m-2 p-2 d-flex ">
+              <div class="container card border-1 m-2 p-2 d-flex col-lg-3 col-md-5">
                 <img
                   src={Data.image}
                   class="banner-image card-image-top border-0 "
