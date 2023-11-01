@@ -17,11 +17,11 @@ function Header({ cartList, setCurrentPage }) {
   return (
     <header className="header py-3">
       <nav className="navbar container row text-center  align-items-center justify-content-between flex-nowrap mx-auto ">
-        <div className="left-btn header-logo  navbar-brand justify-content-start d-flex col-2">
+        <div className="left-btn header-logo  navbar-brand justify-content-start d-flex col">
           <img src={headerSrc} alt="logo" className="header-logo " />
           <div className="input-group"></div>
         </div>
-        <div className="mid-btn col-10 row text-nowrap text-center justify-content-around">
+        <div className="mid-btn col-8  row text-nowrap text-center justify-content-around">
           <div className="dropdown text-center col-12 col-sm-3 ">
             <button
               className="btn dropdown-toggle header-btn "
@@ -66,7 +66,7 @@ function Header({ cartList, setCurrentPage }) {
             Contact Us
           </button>
         </div>
-        <div className="right-btn col  d-flex flex-nowrap justify-content-center col-2">
+        <div className="right-btn col  d-flex flex-nowrap justify-content-center ">
           <button
             href="#"
             className="btn position-relative header-btn"

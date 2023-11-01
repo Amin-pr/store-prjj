@@ -81,82 +81,84 @@ function Products({
       <p className="text-center d-block mt-2 mb-5">
         Order it for you or for your beloved ones{" "}
       </p>
-        <div
-          className="btn-group col-12  my-3"
-          role="group"
-          aria-label="Basic example"
+      <div
+        className="btn-group col-12  my-3"
+        role="group"
+        aria-label="Basic example"
+      >
+        <button
+          className="btn products-category-btn"
+          onClick={() => setCategory("men's clothing")}
+          autocomplete="off"
+          aria-pressed="true"
+          data-bs-toggle="button"
         >
-          <button
-            className="btn products-category-btn"
-            onClick={() => setCategory("men's clothing")}
-            autocomplete="off"
-            aria-pressed="true"
-            data-bs-toggle="button"
-          >
-            Men clothing
-          </button>
-          <button
-            className="btn products-category-btn"
-            onClick={() => setCategory("women's clothing")}
-            autocomplete="off"
-            aria-pressed="true"
-            data-bs-toggle="button"
-          >
-            Women clothing
-          </button>
-          <button
-            className="btn products-category-btn active"
-            onClick={() => setCategory("all")}
-            autocomplete="off"
-            aria-pressed="true"
-            data-bs-toggle="button"
-          >
-            All
-          </button>
+          Men clothing
+        </button>
+        <button
+          className="btn products-category-btn"
+          onClick={() => setCategory("women's clothing")}
+          autocomplete="off"
+          aria-pressed="true"
+          data-bs-toggle="button"
+        >
+          Women clothing
+        </button>
+        <button
+          className="btn products-category-btn active"
+          onClick={() => setCategory("all")}
+          autocomplete="off"
+          aria-pressed="true"
+          data-bs-toggle="button"
+        >
+          All
+        </button>
 
-          <button
-            className="btn products-category-btn"
-            onClick={() => setCategory("jewelery")}
-            data-bs-toggle="button"
-            autocomplete="off"
-            aria-pressed="true"
-          >
-            Jewelry
-          </button>
-          <button
-            className="btn products-category-btn"
-            onClick={() => setCategory("electronics")}
-            autocomplete="off"
-            aria-pressed="true"
-            data-bs-toggle="button"
-          >
-            Electronics
-          </button>
-        </div>
-        {/* <Product Data={Data}></Product> */}
-        <div className="card-holder row   flex-wrap justify-content-center  ">
+        <button
+          className="btn products-category-btn"
+          onClick={() => setCategory("jewelery")}
+          data-bs-toggle="button"
+          autocomplete="off"
+          aria-pressed="true"
+        >
+          Jewelry
+        </button>
+        <button
+          className="btn products-category-btn"
+          onClick={() => setCategory("electronics")}
+          autocomplete="off"
+          aria-pressed="true"
+          data-bs-toggle="button"
+        >
+          Electronics
+        </button>
+      </div>
+      {/* <Product Data={Data}></Product> */}
+      <div className="card-holder row justify-content-center  ">
         {category === "all"
           ? Data.map((Data) => (
-              <div class="container card border-1 m-2 p-2 d-flex position-relative col-lg-3 col-md-5">
+              <div class="container card border-1 m-2 p-2 d-flex col-5 col-lg-3 col-md-5">
                 <img
                   src={Data.image}
                   class="banner-image card-image-top border-0 h-50"
                   alt="product"
                 />
-                <div class="wrapper d-flex flex-wrap align-bottom pt-2 h-50">
-                  <p className="my-3 mx-1 "> {Data.title}</p>
-                  <p className="text-start h5 m-3 ">{Data.price}$</p>
+                <div class="wrapper row  flex-wrap pt-2 justify-content-center">
+                  <p className="my-3 mx-1 col-12"> {Data.title}</p>
+                  <p className=" h5 m-3 col-sm-6 align-self-center justify-self-center col-12 ">
+                    {Data.price}$
+                  </p>
                 </div>
-                <div class="button-wrapper align-self-end p-2  position-absolute bottom-0 start-50 translate-middle-x">
+                <div class="button-wrapper m-0  align-self-end p-2 col-12  row ">
                   <button
-                    class="btn products-category-btn"
+                    class="btn products-category-btn col-12 col-sm-5"
                     onClick={() => productHandler(Data)}
                     onMouseEnter={() => setProductInfo(Data)}
                   >
                     Details
                   </button>
                   <button
-                    class="btn products-category-btn  "
+                    class="btn products-category-btn col-12 col-sm-6  "
                     onMouseEnter={() => setProductInfo(Data)}
                     onClick={() => addHandler(Data)}
                   >
