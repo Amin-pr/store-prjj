@@ -6,7 +6,7 @@ function Comments({ users }) {
 
   
     return slicedComments.map((comment, index) => (
-      <div className="card  m-2 border-0 " key={index}>
+      <div className="comments-card card  m-2 border-0 col-12 col-sm-3" key={index}>
         <div className="card-body row">
           <img
             src="https://i.pravatar.cc/200"
@@ -31,7 +31,7 @@ function Comments({ users }) {
         <p className="h2">Testimonials</p>
         <p className="h5">Some quotes from our happy customers</p>
       </div>
-      <div className="comments-card row container mx-auto flex-wrap justify-content-center ">
+      <div className=" row container mx-auto flex-wrap justify-content-center ">
         <Comment users={users} />
       </div>
     </section>

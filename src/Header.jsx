@@ -21,8 +21,8 @@ function Header({ cartList, setCurrentPage }) {
           <img src={headerSrc} alt="logo" className="header-logo " />
           <div className="input-group"></div>
         </div>
-        <div className="mid-btn col-12 col-sm-3 row text-nowrap text-center justify-content-around">
-          <div className="dropdown text-center col ">
+        <div className="mid-btn col-10 row text-nowrap text-center justify-content-around">
+          <div className="dropdown text-center col-12 col-sm-3 ">
             <button
               className="btn dropdown-toggle header-btn "
               type="button"
@@ -57,14 +57,16 @@ function Header({ cartList, setCurrentPage }) {
             </ul>
           </div>
           <button
-            className="btn col header-btn"
+            className="btn col header-btn col-12 col-sm-3"
             onClick={() => setCurrentPage("home")}
           >
             Home
           </button>
-          <button className="btn col header-btn">Contact Us</button>
+          <button className="btn col header-btn col-12 col-sm-3">
+            Contact Us
+          </button>
         </div>
-        <div className="right-btn col d-flex flex-nowrap justify-content-center col-2">
+        <div className="right-btn col  d-flex flex-nowrap justify-content-center col-2">
           <button
             href="#"
             className="btn position-relative header-btn"

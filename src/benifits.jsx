@@ -3,11 +3,11 @@ function Benifits() {
   return (
     <div className="benifits bg-light m-0 p-0">
       <div className="container  ">
-        <div className=" col  row align-items-center justify-content-center">
-          <div className=" col-12 col-sm-1 mx-1 ">
+        <div className="  row align-items-center justify-content-center">
+          <div className=" col-12 col-sm-5 mx-1 ">
             <img src={benifitsImageSrc} alt="" className="card-img shadow" />
           </div>
-          <div className="benifits-text-holder text-center mx-3 px-5 col-12 col-sm-12 ">
+          <div className="benifits-text-holder text-center mx-3 px-5 col-12 col-sm-5 ">
             <p className="card-title mt-3 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -13,7 +13,7 @@
 }
 .header-logo {
   object-fit: contain;
-  max-width: 20%;
+  max-width: 50px;
   max-height: 50px;
 }
 .mid-btn {
@@ -40,11 +40,17 @@
 .comments {
   background: rgba(56, 63, 86, 0.1);
 }
+.comments-opinion-tex{
+  max-height: 80px !important;
+  overflow-y: auto !important;
 
-.comment-card {
+}
+.comments-card {
   aspect-ratio: 1/1;
   max-width: 355px;
-  max-height: 295px;
+}
+.card-height{
+  max-height: 150px;
 }
 a {
   text-decoration: none;
