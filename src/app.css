@@ -87,8 +87,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.255);
 }
 .image-wrapper {
-  min-width: 200px;
-  min-height: 200px;
+   min-width: 200px;
+  min-height: 200px; 
   height: 200px;
   width: 100%;
 }

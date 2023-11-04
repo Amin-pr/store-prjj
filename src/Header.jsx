@@ -21,7 +21,7 @@ function Header({ cartList, setCurrentPage }) {
           <img src={headerSrc} alt="logo" className="header-logo " />
           <div className="input-group"></div>
         </div>
-        <div className="mid-btn col-10  row text-nowrap text-center justify-content-around">
+        <div className="mid-btn col-8  row text-nowrap text-center justify-content-around">
           <div className="dropdown text-center col-12 col-sm-3 ">
             <button
               className="btn dropdown-toggle header-btn "
