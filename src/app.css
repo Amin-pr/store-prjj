@@ -25,7 +25,7 @@
 }
 .blob-background {
   background-image: url("./pic/blobanimation.svg");
-  background-size: contain;
+  background-size: 150%;
   scroll-behavior: smooth;
 }
 .blob-background-cover {
