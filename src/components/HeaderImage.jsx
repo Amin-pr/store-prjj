@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 function HeaderImage() {
   return (
     <section className="header-image w-100 p-0 border-0 shadow-none">
@@ -9,4 +11,4 @@ function HeaderImage() {
     </section>
   );
 }
-export default HeaderImage;
+export default memo(HeaderImage);

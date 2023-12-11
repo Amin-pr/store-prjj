@@ -1,60 +1,29 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import "./app.css";
-function LoginPage({
-  setCurrentPage,
-  setLogedinEmail,
-  setLogedin,
-  setIsLoading,
-  isLoading,
-}) {
+import "../components/app.css";
+import "../components/LoginForm.css";
+import { useAuth } from "../context/userAuth";
+import { useNavigate } from "react-router";
+import ReactLoading from "react-loading";
+
+function LoginPage() {
   const [formData, setFormData] = useState({
     userName: "",
     userPassword: "",
     userEmail: "",
-    loginEmail: "",
-    loginPassword: "",
+    loginEmail: "marklyan@gmail.com",
+    loginPassword: "simple_password",
   });
-  const [loginRes, setLoginRes] = useState(null);
-  const [isRendered, setIsRendered] = useState(false);
 
-  async function userHandler(e) {
-    e.preventDefault();
-    setLoginRes(null);
-    setIsRendered(false);
-    const { userName, userEmail, userPassword } = formData;
-    try {
-      setIsLoading(true);
-      const response = await axios.post(
-        "https://api.storerestapi.com/auth/register",
-        {
-          name: userName,
-          email: userEmail,
-          password: userPassword,
-        }
-      );
-      console.log(response);
-      const data = await response.data;
-      console.log(userName, userEmail, userPassword, data);
-      await setLoginRes(data);
-      await setIsRendered(true);
-    } catch (error) {
-      // Handle error
-      console.error(error);
-      toast.error(error.response.data.message);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
+  const { dispatch, isLoading } = useAuth();
+  const navigate = useNavigate();
   async function userLoginHandler(e) {
     e.preventDefault();
-    setLoginRes(null);
-    setIsRendered(false);
+    dispatch({ type: "user/login" });
+
     const { loginEmail, loginPassword } = formData;
     try {
-      setIsLoading(true);
       const response = await axios.post(
         "https://api.storerestapi.com/auth/login",
         {
@@ -63,52 +32,52 @@ function LoginPage({
         }
       );
       const res = await response.data;
-      setLoginRes(res);
-      setIsRendered(true);
-
-      console.log(res);
+      if (res.status === 200) {
+        dispatch({ type: "user/logedin", payload: loginEmail });
+        navigate("/");
+        toast.success(" welcome " + loginEmail);
+      }
     } catch (error) {
       // Handle error
       console.error(error);
       error.response.data.status === 400 &&
         toast.error(error.response.data.message);
-    } finally {
-      setIsLoading(false);
     }
   }
 
-  useEffect(() => {
-    if (isRendered) {
-      console.log(loginRes?.message);
-      if (loginRes?.status === 200) {
-        toast.success("Login success");
-        setCurrentPage("home");
-        setLogedin(true);
-        setLogedinEmail({ email: formData.loginEmail });
-
-        console.log(formData.loginEmail);
-      } else if (loginRes?.status === 201) {
-        toast.success("Signup success");
-        setCurrentPage("home");
-      }
-    }
-  }, [loginRes, isRendered]);
-
-  fetch("https://api.storerestapi.com/users/612e4851345dcc333ac6cb24")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-
-  useEffect(function () {
-    async function fetchUser() {
-      const res = await fetch("https://api.storerestapi.com/users");
-      const data = await res.json();
+  const userSignupHandler = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "user/signup" });
+    const { userName, userEmail, userPassword } = formData;
+    try {
+      const response = await axios.post(
+        "https://api.storerestapi.com/auth/register",
+        {
+          name: userName,
+          email: userEmail,
+          password: userPassword,
+        }
+      );
+      const data = await response.data;
       console.log(data);
-      // data.data.map((user) => {formData.loginEmail===email}(set))
+      if (data.status === 400) dispatch({ type: "user/signedup" });
+      toast.success("User registered successfully");
+      navigate("/");
+    } catch (error) {
+      // Handle error
+      console.error(error);
+      toast.error(error.response.data.message);
     }
-    fetchUser();
-  }, []);
+  };
+
   return (
     <>
+      {isLoading && (
+        <div className="loading-wrapper ">
+          <ReactLoading type="spokes" color="#4B0082" />
+        </div>
+      )}
+
       <div className="user-pass position-absolute top-0 right-0 bg-white">
         <p className="user-pass">user: marklyan@gmail.com </p>
 
@@ -119,7 +88,7 @@ function LoginPage({
           <Toaster />
           <button
             className="bg-transparent m-0 btn w-25 "
-            onClick={() => setCurrentPage("home")}
+            onClick={() => navigate("")}
           >
             ✖️
           </button>
@@ -159,11 +128,11 @@ function LoginPage({
                   setFormData({ ...formData, userPassword: e.target.value })
                 }
               />
-              <button onClick={userHandler}>Sign up</button>
+              <button onClick={userSignupHandler}>Sign up</button>
             </form>
           </div>
           <div className="login">
-            <form className="form-input ">
+            <form className="form-input">
               <label htmlFor="chk" aria-hidden="true">
                 Login
               </label>

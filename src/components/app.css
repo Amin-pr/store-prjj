@@ -24,12 +24,12 @@
   max-width: 90%;
 }
 .blob-background {
-  background-image: url("./pic/blobanimation.svg");
+  background-image: url("../pic/blobanimation.svg");
   background-size: 150%;
   scroll-behavior: smooth;
 }
 .blob-background-cover {
-  background-image: url("./pic/blobanimation.svg");
+  background-image: url("../pic/blobanimation.svg");
   background-size: cover;
   scroll-behavior: smooth;
 }
@@ -185,7 +185,7 @@ p {
   text-transform: lowercase !important;
 }
 .empty-cart {
-  background-image: url("./pic/empty-cart.svg");
+  background-image: url("../pic/empty-cart.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -196,7 +196,7 @@ p {
   min-width: 200px;
 }
 .popular {
-  background-image: url("./pic/popular-bg.svg");
+  background-image: url("../pic/popular-bg.svg");
   background-size: cover;
 }
 .products-category-btn {

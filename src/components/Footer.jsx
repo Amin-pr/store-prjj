@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { memo } from "react";
 import "./app.css";
 
 function Footer() {
@@ -54,4 +56,4 @@ function Footer() {
     </section>
   );
 }
-export default Footer;
+export default memo(Footer);

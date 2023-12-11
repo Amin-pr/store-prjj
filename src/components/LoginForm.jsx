@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./LoginForm.css"
 function LoginForm() {
   return (
@@ -30,4 +31,4 @@ function LoginForm() {
     </body>
   );
 }
-export default LoginForm;
+export default memo(LoginForm);
