@@ -3,7 +3,7 @@ import { memo } from "react";
 function Benifits() {
   const benifitsImageSrc = process.env.PUBLIC_URL + "/img/benifits-img.jpg";
   return (
-    <div className="benifits bg-light m-0 p-0">
+    <div className="benifits bg-light m-0 py-5">
       <div className="container  ">
         <div className="  row align-items-center justify-content-center">
           <div className=" col-12 col-sm-5 mx-1 ">

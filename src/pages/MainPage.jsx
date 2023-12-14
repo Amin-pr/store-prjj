@@ -28,7 +28,9 @@ function MainPage() {
           <Popular></Popular>
           <div className="w-100 link-to-products-holder d-flex justify-content-center align-items-center ">
             <Link className="btn products-page-btn text-white py-5" to={"products"} >
-              All our Products
+              <p className="h1">
+                All our Products
+                </p>
             </Link>
           </div>
           <Benifits></Benifits>
