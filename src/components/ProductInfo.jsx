@@ -1,13 +1,17 @@
+import { useParams } from "react-router";
 import { useData } from "../context/DataContext";
 
 function ProductInfo() {
+  const { Data, addHandler, deleteHandler, cartList } = useData();
 
-  const { productInfo, addHandler, deleteHandler, cartList } = useData();
-
+  const params = useParams();
+  const productId=Number(params.id)
+  const productInfo = Data?.find((data) => data.id === productId);
+  console.log(productInfo)
   const quantity = cartList?.map((product) =>
     product.id === productInfo.id ? product.quantity : ""
   );
- 
+
   return (
     productInfo && (
       <div

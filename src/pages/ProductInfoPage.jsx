@@ -1,15 +1,15 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Products from "../components/Products";
+import ProductInfo from "../components/ProductInfo";
 
-function ProductPage() {
+function ProductInfoPage() {
   return (
     <>
       <Header />
-      <Products />
+      <ProductInfo />
       <Footer />
     </>
   );
 }
 
-export default ProductPage;
+export default ProductInfoPage;

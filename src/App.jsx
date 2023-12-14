@@ -11,7 +11,7 @@ import Cart from "./pages/Cartpage";
 import LoginPage from "./pages/LoginPage";
 import ProductPage from "./pages/ProductPage";
 import MainPage from "./pages/MainPage";
-
+import ProductInfoPage from "./pages/ProductInfoPage";
 
 function App() {
   const [showApp, setShowApp] = useState(true);
@@ -40,8 +40,7 @@ function App() {
 
   return (
     <>
-
-      <Toaster/>
+      <Toaster />
       {isLoading && (
         <div className="loading-wrapper ">
           <ReactLoading type="spokes" color="#4B0082" />
@@ -61,7 +60,11 @@ function App() {
                 >
                   <Routes>
                     <Route index element={<MainPage />} />
-                    <Route path="product" element={<ProductPage />} />
+                    <Route path="products" element={<ProductPage />}></Route>
+                    <Route
+                      path="products/:id"
+                      element={<ProductInfoPage />}
+                    ></Route>
                     <Route path="cart" element={<Cart />} />
                     <Route path="login" element={<LoginPage />} />
                   </Routes>

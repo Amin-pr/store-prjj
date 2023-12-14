@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./app.css";
 import { useData } from "../context/DataContext";
 import { useNavigate } from "react-router";
-import { key } from "localforage";
+import { Link } from "react-router-dom";
 function Products() {
   const [category, setCategory] = useState("all");
   const navigate = useNavigate();
@@ -15,7 +15,10 @@ function Products() {
     <div className="products container  py-5  blob-background">
       <h3 className="text-center d-block m-2 h3">Products</h3>
       <p className="text-center d-block mt-2 mb-5">
-        Order it for you or for your beloved ones{" "}
+        Order it for you or for your beloved ones <br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit est maxime
+        at obcaecati fuga eligendi esse dolorum illum ullam quisquam unde eum
+        eveniet totam laboriosam architecto, placeat, dolores iste maiores.
       </p>
       <div
         className="products-cats-btn-holder btn-group col-12 row  my-3 "
@@ -73,15 +76,14 @@ function Products() {
                 onMouseEnter={() =>
                   dispatch({ type: "item/select", payload: Data })
                 }
-              
-              key={Data.id}
+                key={Data.id}
               >
                 <div className="image-wrapper">
                   <img
                     src={Data.image}
                     className="banner-image card-image-top border-0 h-"
                     alt="product"
-                    onClick={() => productHandler(Data)}
+                    onClick={() => navigate(`${Data.id}`)}
                   />
                 </div>
                 <div className="wrapper row  flex-wrap pt-2 justify-content-center">
@@ -91,12 +93,18 @@ function Products() {
                   </p>
                 </div>
                 <div className="button-wrapper m-0  align-self-end p-2 col-12  row ">
-                  <button
+                  <Link
+                    to={`${Data.id}`}
+                    className="btn products-category-btn col-12 col-sm-5"
+                    onClick={() => navigate(`${Data.id}`)}
+                  >
+                    {/* <button
                     className="btn products-category-btn col-12 col-sm-5"
                     onClick={() => productHandler(Data)}
-                  >
+                    > */}
                     Details
-                  </button>
+                    {/* </button> */}
+                  </Link>
                   <button
                     className="btn products-category-btn col-12 col-sm-6  "
                     onClick={() => addHandler(Data)}
@@ -128,12 +136,18 @@ function Products() {
                   </p>
                 </div>
                 <div className="button-wrapper m-0  align-self-end p-2 col-12  row ">
-                  <button
+                  <Link
+                    to={`${Data.id}`}
+                    className="btn products-category-btn col-12 col-sm-5"
+                    // onClick={() => productHandler(Data)}
+                  >
+                    {/* <button
                     className="btn products-category-btn col-12 col-sm-5"
                     onClick={() => productHandler(Data)}
-                  >
+                    > */}
                     Details
-                  </button>
+                    {/* </button> */}
+                  </Link>
                   <button
                     className="btn products-category-btn col-12 col-sm-6  "
                     onClick={() => addHandler(Data)}

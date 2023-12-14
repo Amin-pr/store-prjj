@@ -3,15 +3,11 @@
   max-height: 50px;
 }
 .header {
-  background: rgb(223, 198, 194);
-  background: linear-gradient(
-    90deg,
-    rgba(223, 198, 194, 0.5) 0%,
-    rgb(255, 255, 255) 46%,
-    rgba(214, 185, 182, 0.5) 100%
-  );
+  background: rgb(67, 67, 67);
+  color: white;
 }
 .header-logo {
+  background-image: ".../public/logo.png";
   object-fit: contain;
   max-width: 50px;
   max-height: 50px;
@@ -39,6 +35,9 @@
 }
 .comments {
   background: rgba(56, 63, 86, 0.1);
+}
+.comments-bg {
+  background-color: rgb(67, 67, 67);
 }
 .comments-opinion-tex {
   max-height: 80px !important;
@@ -87,7 +86,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.255);
 }
 .image-wrapper {
-  min-height: 200px; 
+  min-height: 200px;
   height: 200px;
   width: 100%;
 }
@@ -195,10 +194,7 @@ p {
   min-height: 200px;
   min-width: 200px;
 }
-.popular {
-  background-image: url("../pic/popular-bg.svg");
-  background-size: cover;
-}
+
 .products-category-btn {
   transition: all 0.2s ease-in-out;
   z-index: 3;
@@ -215,10 +211,13 @@ p {
   );
 }
 
+.link-to-products-holder {
+  background-color: rgb(67, 67, 67);
+}
 .header-btn {
   font-weight: 500;
+  color: white;
   text-transform: uppercase;
-  color: #624556;
   transition: all 0.5s ease-in;
 }
 .header-btn:hover {
@@ -237,4 +236,7 @@ p {
 @media screen and (max-width: 576px) {
   .products-cats-btn-holder > div {
   }
+}
+.products-page-btn {
+  width: 100vw;
 }
