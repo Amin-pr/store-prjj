@@ -16,14 +16,15 @@ function LoginPage() {
     loginPassword: "simple_password",
   });
 
-  const { dispatch, isLoading } = useAuth();
+  const { dispatch, isAuthLoading } = useAuth();
   const navigate = useNavigate();
   async function userLoginHandler(e) {
     e.preventDefault();
+    
     dispatch({ type: "user/login" });
-
     const { loginEmail, loginPassword } = formData;
     try {
+      
       const response = await axios.post(
         "https://api.storerestapi.com/auth/login",
         {
@@ -59,7 +60,6 @@ function LoginPage() {
         }
       );
       const data = await response.data;
-      console.log(data);
       if (data.status === 400) dispatch({ type: "user/signedup" });
       toast.success("User registered successfully");
       navigate("/");
@@ -72,7 +72,7 @@ function LoginPage() {
 
   return (
     <>
-      {isLoading && (
+      {isAuthLoading && (
         <div className="loading-wrapper ">
           <ReactLoading type="spokes" color="#4B0082" />
         </div>
@@ -85,10 +85,10 @@ function LoginPage() {
       </div>
       <div className="body">
         <div className="main">
-          <Toaster />
+          {/* <Toaster /> */}
           <button
             className="bg-transparent m-0 btn w-25 "
-            onClick={() => navigate("")}
+            onClick={() => navigate("/")}
           >
             ✖️
           </button>

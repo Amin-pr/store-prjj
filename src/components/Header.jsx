@@ -3,12 +3,7 @@ import { useData } from "../context/DataContext";
 
 function Header() {
   const headerSrc = process.env.PUBLIC_URL + "./logo.png";
-  const { cartList, setCurrentPage } = useData();
-  function userIconHandler(loggedIn) {
-    loggedIn === true
-      ? setCurrentPage("userHome")
-      : setCurrentPage("LoginPage");
-  }
+  const { cartList } = useData();
 
   const cartItemsNum = cartList?.reduce((total, cartItem) => {
     return total + cartItem.quantity;
@@ -22,36 +17,8 @@ function Header() {
           <div className="input-group"></div>
         </div>
         <div className="mid-btn col-8  row text-nowrap text-center justify-content-around">
-          <button
-            className=" dropdown-toggle header-btn btn  text-center col col-sm-3 "
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button className="  header-btn btn  text-center col col-sm-3 ">
             Discovery
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              dropdown
-              <li>
-                <a href="#2" className="dropdown-item h2">
-                  1
-                </a>
-              </li>
-              <li>
-                <a href="#2" className="dropdown-item h2">
-                  1
-                </a>
-              </li>
-              <li>
-                <a href="#5" className="dropdown-item h3">
-                  1
-                </a>
-              </li>
-              <li>
-                <a href="#2" className="dropdown-item">
-                  1
-                </a>
-              </li>
-            </ul>
           </button>
           <NavLink to={"/"} className="btn  header-btn col col-sm-3">
             Home

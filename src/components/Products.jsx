@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./app.css";
 import { useData } from "../context/DataContext";
 import { useNavigate } from "react-router";
+import { key } from "localforage";
 function Products() {
   const [category, setCategory] = useState("all");
   const navigate = useNavigate();
@@ -72,6 +73,8 @@ function Products() {
                 onMouseEnter={() =>
                   dispatch({ type: "item/select", payload: Data })
                 }
+              
+              key={Data.id}
               >
                 <div className="image-wrapper">
                   <img
@@ -109,6 +112,7 @@ function Products() {
                 onMouseEnter={() =>
                   dispatch({ type: "item/select", payload: Data })
                 }
+                key={Data.id}
               >
                 <div className="image-wrapper">
                   <img

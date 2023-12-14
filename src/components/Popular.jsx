@@ -13,7 +13,6 @@ function Popular() {
     }
     return 0;
   };
-  console.log(Data);
   const sortedByRate = Data?.slice().sort(compsByRate);
   sortedByRate?.splice(4);
   // Data.rating.rate.sort((a,b)=>a-b)
@@ -26,7 +25,7 @@ function Popular() {
       </div>
       <div className="card-holder row row-cols-4 flex-wrap justify-content-center  p-3">
         {sortedByRate?.map((Data) => (
-          <div className="container card border-1 m-2 p-2 d-flex col-5 col-lg-3 col-md-5">
+          <div className="container card border-1 m-2 p-2 d-flex col-5 col-lg-3 col-md-5" key={Data.id}>
             <img
               src={Data.image}
               className="banner-image card-image-top border-0 h-50"

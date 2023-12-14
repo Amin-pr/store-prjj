@@ -1,36 +1,47 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReactLoading from "react-loading";
 import "./components/bootstrap.min.css";
 import "./components/app.css";
-import  { Toaster } from "react-hot-toast";
-import Mainpage from "./pages/MainPage";
-import Cart from "./pages/Cartpage";
+import toast, { Toaster } from "react-hot-toast";
+import "./pages/MainPage";
 import { DataProvider, useData } from "./context/DataContext";
+import { UserAuthProvider, useAuth } from "./context/userAuth";
+import Cart from "./pages/Cartpage";
 import LoginPage from "./pages/LoginPage";
-import { UserAuthProvider } from "./context/userAuth";
 import ProductPage from "./pages/ProductPage";
+import MainPage from "./pages/MainPage";
+
 
 function App() {
   const [showApp, setShowApp] = useState(true);
-  const {  isLoading, dispatch } = useData();
+  const { isLoading, dispatch, error } = useData();
+  const { isAuthLoading } = useAuth();
 
   useEffect(() => {
     dispatch({ type: "loading" });
+
     const timer = setTimeout(() => {
+      dispatch({ type: "loaded" });
       setShowApp(true);
     }, 2000);
 
     return () => clearTimeout(timer);
   }, [dispatch, showApp]);
 
-  // console.log(productInfo);
-  // useEffect(() => {
-  //   error !== "" && toast(error);
-  // }, [error]);
+  useEffect(() => {
+    error !== "" && toast(error);
+  }, [error]);
+
+  // const MainPage = lazy(() => import("./pages/MainPage"));
+  // const Cart = lazy(() => import("./pages/Cartpage"));
+  // const LoginPage = lazy(() => import("./pages/LoginPage"));
+  // const ProductPage = lazy(() => import("./pages/ProductPage"));
 
   return (
     <>
+
+      <Toaster/>
       {isLoading && (
         <div className="loading-wrapper ">
           <ReactLoading type="spokes" color="#4B0082" />
@@ -41,18 +52,19 @@ function App() {
           showApp ? "transition-appear active" : "transition-appear"
         }`}
       >
-       <Toaster />
         <div className="holder px-0 ">
           <DataProvider>
             <UserAuthProvider>
               <BrowserRouter>
-              <Suspense fallback={<ReactLoading type="spokes" color="#4B0082"/>}>
-                <Routes>
-                  <Route index element={<Mainpage />} />
-                  <Route path="product" element={<ProductPage />} />
-                  <Route path="cart" element={<Cart />} />
-                  <Route path="login" element={<LoginPage />} />
-                </Routes>
+                <Suspense
+                  fallback={<ReactLoading type="spokes" color="#4B0082" />}
+                >
+                  <Routes>
+                    <Route index element={<MainPage />} />
+                    <Route path="product" element={<ProductPage />} />
+                    <Route path="cart" element={<Cart />} />
+                    <Route path="login" element={<LoginPage />} />
+                  </Routes>
                 </Suspense>
               </BrowserRouter>
             </UserAuthProvider>

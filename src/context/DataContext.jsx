@@ -78,10 +78,8 @@ function reducer(state, action) {
       }
       break;
 
-    // return {
-    //   ...state,
-    //   cartList: state.cartList.filter((item) => item.id !== action.payload),
-    // };
+    case "Data/error":
+      return { ...state, error: action.payload };
 
     case "item/select":
       return { ...state, productInfo: action.payload };
@@ -103,9 +101,8 @@ function DataProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState([]);
 
-  const [error, setError] = useState("");
   const [
-    { state, isLoading, cartList, selectedItem, products, productInfo, Data },
+    { state, isLoading, cartList, selectedItem, products, productInfo, Data,users },
     dispatch,
   ] = useReducer(reducer, initalState);
 
@@ -114,7 +111,6 @@ function DataProvider({ children }) {
     try {
       axios.get("https://fakestoreapi.com/products/").then((response) => {
         dispatch({ type: "Data/products/fetched", payload: response.data });
-        console.log(response.data);
       });
     } catch (error) {
       dispatch({ type: "Data/error", payload: error.message });
@@ -125,7 +121,7 @@ function DataProvider({ children }) {
     dispatch({ type: "Data/users/fetching" });
     try {
       axios.get("https://api.storerestapi.com/users").then((response) => {
-        dispatch({ type: "Data/users/fetched", payload: response.data });
+        dispatch({ type: "Data/users/fetched", payload: response.data.data });
       });
     } catch (error) {
       dispatch({ type: "Data/error", payload: error.message });
@@ -167,6 +163,7 @@ function DataProvider({ children }) {
         Data,
         products,
         user,
+        users,
         setUser,
         setLoggedIn,
         productInfo,
@@ -178,6 +175,7 @@ function DataProvider({ children }) {
 }
 
 function useData() {
+  
   const context = useContext(DataContext);
   if (context === undefined)
     throw new Error("dataContext is used out of its provider");

@@ -14,32 +14,32 @@ const initalState = {
 function reducer(state, action) {
   switch (action.type) {
     case "user/login":
-      return { ...state, loginRes: null, isLoading: true };
+      return { ...state, loginRes: null, isAuthLoading: true };
 
     case "user/logedin":
       return {
         ...state,
         loginRes: action.payload,
-        isLoading: false,
+        isAuthLoading: false,
         currentUser: action.payload,
       };
 
     case "user/signup":
-      return { ...state, loginRes: null, isLoading: true };
+      return { ...state, loginRes: null, isAuthLoading: true };
     case "user/signedup":
-      return { ...state, loginRes: action.payload, isLoading: false };
+      return { ...state, loginRes: action.payload, isAuthLoading: false };
     default:
       throw new Error("invalid action");
   }
 }
 
 function UserAuthProvider({ children }) {
-  const [{ logedin, currentUser, users, formData, isloading }, dispatch] =
+  const [{ logedin, currentUser, users, formData, isAuthLoading }, dispatch] =
     useReducer(reducer, initalState);
  return (
     <userAuthorContext.Provider
       value={{
-        isloading,
+        isAuthLoading,
         logedin,
         currentUser,
         users,

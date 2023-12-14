@@ -8,7 +8,6 @@ import Benifits from "../components/benifits";
 import Comments from "../components/Comments";
 import Popular from "../components/Popular";
 import Footer from "../components/Footer";
-import  { Toaster } from "react-hot-toast";
 import { useData } from "../context/DataContext";
 import ReactLoading from "react-loading";
 function MainPage() {
@@ -25,7 +24,7 @@ function MainPage() {
       )}
 
       <div className={`App overflow-x-hidden position-relative `}>
-        <Toaster />
+        
         <div className="holder px-0 ">
           <Header />
           <HeaderImage />
