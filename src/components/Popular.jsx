@@ -49,11 +49,13 @@ function Popular() {
             />
             <div className="wrapper row  flex-wrap pt-2 justify-content-center">
               <p className="mt-3  col-12 "> {Data.title}</p>
-              <div className=" h5 col-sm-6 text-center align-text-bottom d-flex align-self-end col-12 mt-3 ">
-                {Data.price}$
+              <div className=" h5 col-sm-6 align-self-end col-12 mt-3 ">
+                <p className="h5">
+                  {Data.price}$
+                  </p>
               </div>
               <div className="text-center h5 col-12 col-sm-6 mt-3  align-self-end justify-self-center">
-                {Data.rating.rate}⭐
+                <p className="h5">{Data.rating.rate}⭐</p>
               </div>
             </div>
           </div>
