@@ -81,7 +81,7 @@ function Products() {
                 <div className="image-wrapper">
                   <img
                     src={Data.image}
-                    className="banner-image card-image-top border-0 h-"
+                    className="banner-image card-image-top border-0 "
                     alt="product"
                     onClick={() => navigate(`${Data.id}`)}
                   />
@@ -125,7 +125,7 @@ function Products() {
                 <div className="image-wrapper">
                   <img
                     src={Data.image}
-                    className="banner-image card-image-top border-0 h-"
+                    className="banner-image card-image-top border-0 "
                     alt="product"
                   />
                 </div>

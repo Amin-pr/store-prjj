@@ -7,6 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import "./pages/MainPage";
 import { DataProvider, useData } from "./context/DataContext";
 import { UserAuthProvider, useAuth } from "./context/userAuth";
+import FullPageLoading from "./components/FullPageLoading";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
 const Cart = lazy(() => import("./pages/Cartpage"));
@@ -52,7 +53,7 @@ function App() {
             <UserAuthProvider>
               <BrowserRouter>
                 <Suspense
-                  fallback={<ReactLoading type="spokes" color="#4B0082" />}
+                  fallback={<FullPageLoading />}
                 >
                   <Routes>
                     <Route index element={<MainPage />} />

@@ -33,6 +33,11 @@
 .benifits {
   background-color: #f7f8fa;
 }
+.benifits-text-list{
+  list-style-type: circle 
+}
+
+
 .comments {
   background: rgba(56, 63, 86, 0.1);
 }
@@ -81,12 +86,11 @@ a {
   background-size: cover;
   width: 100%;
   height: 100%;
-
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.255);
 }
 .image-wrapper {
-  min-height: 200px;
+  min-height: 250px;
   height: 200px;
   width: 100%;
 }
