@@ -7,17 +7,13 @@ import toast, { Toaster } from "react-hot-toast";
 import "./pages/MainPage";
 import { DataProvider, useData } from "./context/DataContext";
 import { UserAuthProvider, useAuth } from "./context/userAuth";
-// import Cart from "./pages/Cartpage";
-// import LoginPage from "./pages/LoginPage";
-// import ProductPage from "./pages/ProductPage";
-// import MainPage from "./pages/MainPage";
-// import ProductInfoPage from "./pages/ProductInfoPage";
 
-  const MainPage = lazy(() => import("./pages/MainPage"));
-  const Cart = lazy(() => import("./pages/Cartpage"));
-  const LoginPage = lazy(() => import("./pages/LoginPage"));
-  const ProductPage = lazy(() => import("./pages/ProductPage"));
-  const ProductInfoPage = lazy(() => import("./pages/ProductInfoPage"));
+const MainPage = lazy(() => import("./pages/MainPage"));
+const Cart = lazy(() => import("./pages/Cartpage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const ProductInfoPage = lazy(() => import("./pages/ProductInfoPage"));
+
 function App() {
   const [showApp, setShowApp] = useState(true);
   const { isLoading, dispatch, error } = useData();
