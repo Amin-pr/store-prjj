@@ -225,6 +225,7 @@ p {
 }
 .cartlist-delete-btn {
   transition: all 0.3s ease-in 0.3s;
+  transform-origin: center;
 }
 .cartlist-delete-btn:hover {
   scale: 1.2;
